@@ -44,14 +44,14 @@ while True:
         end_time = start_time + datetime.timedelta(days=1)
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-BTC", 0.5)
+            target_price = get_target_price("KRW-MLK", 0.5)
             current_price = get_current_price("KRW-MLK")
             if target_price < current_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
                     upbit.buy_market_order("KRW-MLK", krw*0.9995)
         else:
-            btc = get_balance("MLK")
+            mlk = get_balance("MLK")
             if mlk > 0.00008:
                 upbit.sell_market_order("KRW-MLK", mlk*0.9995)
         time.sleep(1)
